@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLab &middot; Inicio </title>
+    <!-- <link rel="icon" href="../resources/img/logo/icon.png" type="image/png" sizes="16x16"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <link rel="stylesheet" href="css/all.css" />
+</head>
+<body> 
+<main>
+    <div class="container-fluid">
+        <div class="row" id="login-row">
+
+            <!-- Form container -->
+            <div id="form-cont" class="col-sm-12 col-md-12 col-lg-9">
+                <div class="container-fluid h-100">
+                    <div class="row h-100 mx-auto justify-content-center align-items-center">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <img src="img/farlab.png" class="img-fluid" alt="FarLab">
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <form id="formLogin" action="" method="post">
+                                <div class="form-group">
+                                    <label id="log-lbl" for="user-name">Ingrese su
+                                        correo</label>
+                                    <input type="text" class="form-control" name="userEmail" id="userEmail">
+                                </div>
+                                <div class="form-group">
+                                    <label id="log-lbl" for="user-pass">Ingrese su
+                                        contraseña</label>
+                                    <input type="password" class="form-control" name="userPass" id="userPass">
+                                </div>
+                                <div class="col-sm-12 col-md-12 d-flex justify-content-center my-0">                                   
+                                    <a href="main.html" class="btn btn-info btn-lg align-self-center mb-3" id="btnIngresar">Ingresar</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-12 d-flex justify-content-center my-0">
+                            <a href="" id="recuPass">Recuperar contraseña</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Side bar -->
+            <div id="side-bar" class="col col-sm-12 col-md-3 d-none d-lg-block">
+                <div class="container h-100">
+                    <div class="row h-100 mx-auto justify-content-center my-auto">
+                        <div class="col-12 text-center d-flex justify-content-center align-items-center mt-4">
+                            <h1 id="welcomeMsg" class="text-center">¡Bienvenido a BestandLab!</h1>
+                        </div>
+                        <div class="col-12 text-center d-flex justify-content-center align-items-start mt-3">
+                            <h5>Sistema de manejo y seguimiento de inventario de FarLab</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>    
+</main>
+    <footer>    
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script defer src="js/solid.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/gijgo.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+    </footer>    
+</html>        

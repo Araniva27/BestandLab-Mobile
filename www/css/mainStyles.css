@@ -1,0 +1,445 @@
+@charset "UTF-8";
+@import "poppins.css";
+/* Importa la fuente regular de Archivo */
+@font-face {
+  font-family: "Archivo-Regular";
+  src: url("../fonts/../fonts/Archivo-Regular.ttf") format("truetype");
+  font-weight: 800;
+}
+/* Importa la fuente pesada de Archivo */
+@font-face {
+  font-family: "Archivo-Bold";
+  src: url("../fonts/../fonts/Archivo-Bold.ttf") format("truetype");
+  font-weight: 500;
+}
+/* Importa la fuente italica de Archivo */
+@font-face {
+  font-family: "Archivo-Italic";
+  src: url("../fonts/../fonts/Archivo-Italic.ttf") format("truetype");
+  font-weight: 900;
+}
+/* Cómo funcionan los archivos .scss y SASS, generalmente, es que permiten trabajar con variables en el archivo .scss, para evitar repetición masiva de componentes, siempre con sintaxis de CSS pero con opciones de nesteo y muchas más. Sin embargo para poder 
+usarlos, es necesario convertirlos a css primero; para eso está SASS. 
+Se instala como un paquete npm "npm install -g sass", se navega hacia la carpeta que
+contienen los estilos scss y css, y se pone el comando 
+"sass --watch ARCHIVO.scss NUEVO_ARCHIVO.css" lo que hará que cada vez que es guardado 
+el archivo .scss, se compilará a uno funcional de .css con el nombre indicado*/
+body {
+  margin: 0;
+  font-family: "Archivo-Regular", "sans-serif";
+  background-color: #f0f3f6;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+
+th, b {
+  font-family: "Archivo-Bold";
+}
+
+/* ````````````  NAVBAR CSS  ```````````` */
+nav {
+  background-color: #2e9cca;
+}
+
+.navbar {
+  min-height: 80px;
+  max-width: 100%;
+}
+
+#navbarSupportedContent, #actionUser {
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  position: relative;
+}
+
+.navbar-brand {
+  font-family: "Archivo-Bold", "sans-serif";
+  font-size: 30px;
+}
+
+.nav-link,
+.dropdown-item {
+  font-family: "Archivo-Regular";
+  font-size: 17px;
+}
+
+.profile-pic {
+  border-radius: 20px;
+  height: 50px;
+  width: 50px;
+}
+
+#user-profile {
+  font-family: "Archivo-Regular";
+  font-size: 17px;
+  opacity: 1;
+  color: white;
+}
+
+#user-profile:hover {
+  opacity: 3;
+}
+
+a.nav-link {
+  margin: 0px 15px;
+  padding: 10px 15px;
+  border-radius: 1em;
+}
+a.nav-link:hover {
+  background-color: #1977a0;
+  transition: 0.5s linear;
+  opacity: 2;
+  color: white;
+  font-weight: bold;
+}
+a.dropdown-toggle {
+  margin: 0px 15px;
+}
+
+/* -/--/--/--/--/--/- SCROLL STYLES -/--/--/--/--/- */
+.scrollbar-info::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #dbdbdb;
+  border-radius: 3em;
+  width: 6px;
+}
+
+.scrollbar-info::-webkit-scrollbar {
+  height: 12px;
+  width: 6px;
+  background-color: rgba(219, 219, 219, 0);
+}
+
+.scrollbar-info::-webkit-scrollbar-thumb {
+  border-radius: 3em;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #33b5e5;
+}
+
+/* ````````````  FOOTER CSS  ```````````` */
+footer {
+  background-color: #2e9cca;
+  color: white;
+}
+footer #iconsContainer a {
+  color: white;
+  background-color: #21c7b6;
+  height: 100%;
+  font-size: 2em;
+}
+footer #infoText h1 {
+  border-left: 5px solid white;
+  padding-left: 10px;
+  text-align: justify;
+}
+footer #infoContact h1 {
+  border-left: 5px solid white;
+  padding-left: 10px;
+  text-align: left;
+}
+footer #infoContact a {
+  color: white;
+}
+footer #infoContact a:hover {
+  opacity: 0.7;
+}
+footer #infoContact #infoContactDet {
+  font-size: 18px;
+}
+
+/* ````````````  MAIN BODY CSS  ```````````` */
+a {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 16px;
+  color: #1f8fbe;
+}
+a:hover {
+  color: #21c7b6;
+}
+
+/* -/--/--/--/--/--/- PRODUCT STYLES -/--/--/--/--/- */
+#productsByTypeList {
+  max-height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.prod-head {
+  font-family: "Archivo-Bold", "sans-serif";
+}
+
+.prod-help {
+  font-size: 16px !important;
+  text-align: center;
+  border-radius: 10px;
+  /* background-color: $other-text-bg; */
+  font-family: "Archivo-Bold", "sans-serif";
+  opacity: 0.5;
+}
+
+#desplTypes {
+  background-color: #fabe18;
+  height: 60px;
+  font-size: 20px;
+  font-family: "Archivo-Bold", "sans-serif";
+}
+
+#pepo:active {
+  transition-timing-function: ease-out;
+  transition: 2s;
+}
+
+#loadedProd:focus {
+  background-color: #109e97;
+}
+
+#secondPart {
+  background-color: #d7e8fb;
+  border-radius: 1em;
+}
+#secondPart input, #secondPart textarea, #secondPart select {
+  background-color: white !important;
+}
+#secondPart .acc-btn {
+  height: 50px;
+  font-family: "Archivo-Bold", "sans-serif";
+  /* color: white; */
+  background-color: #62A87C;
+  font-size: 20px;
+  opacity: 0.8;
+}
+#secondPart .acc-btn#desplProdVenta {
+  background-color: #136F63 !important;
+  color: white;
+}
+#secondPart label {
+  font-size: 18px !important;
+  font-family: "Archivo-Bold", "sans-serif";
+}
+
+#registroProducto label {
+  font-size: 16px !important;
+}
+#registroProducto input {
+  background-color: white;
+}
+
+/* -/--/--/--/--/--/- INPUTS STYLES -/--/--/--/--/- */
+input[type=text] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=text]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=text]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=password] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=password]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=password]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=email] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=email]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=email]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=search] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=search]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=search]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=tel] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=tel]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=tel]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=date] {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+input[type=date]:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+input[type=date]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+select.form-control {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+select.form-control:hover {
+  box-shadow: 0 4px 4px -4px gray;
+  -webkit-box-shadow: 0 4px 4px -4px gray;
+}
+select.form-control:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* -/--/--/--/--/--/- LOGIN CSS -/--/--/--/--/- */
+#login-row {
+  font-family: "Archivo-Regular";
+  height: 100vh;
+}
+#login-row #log-form {
+  width: 30vw;
+  padding: 12px;
+  border-radius: 20px;
+  word-wrap: break-word;
+}
+#login-row #form-cont {
+  background-color: white;
+}
+#login-row #log-lbl {
+  font-size: 18px;
+  font-weight: 800;
+}
+#login-row #side-bar {
+  background-color: #26a69a;
+  color: white;
+}
+#login-row #side-bar #welcomeMsg {
+  word-wrap: break-word;
+  font-weight: bold;
+}
+#login-row #btnIngresar {
+  width: 30vw;
+}
+#login-row #btnIngresar a {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+#login-row #recuPass {
+  font-size: 18px;
+}
+
+.xd{
+  background-color: lightblue;  
+  border-radius: 1em;  
+}
+
+.xr{
+  background-color: lightblue;  
+  border-radius: 1em;
+  
+  
+}
+
+#tituloActivos{
+  justify-content:center;
+}
+
+.lbl{
+  font-size: 20px;
+}
+.u{
+  margin-top: 1em;
+}
+
+.btnSpace{
+  margin: 0.5em;
+}
+
+#buttonsMove{
+  justify-content: center;
+}
+
+.card-body-icon {
+  position: absolute;
+  z-index: 0;
+  top: -0.7rem;
+  right: -0.3rem;
+  opacity: 0.4;
+
+  font-size: 4rem;
+  @include rotate;
+}
+
+// Override breakpoints for card columns to work well with sidebar layout
+ .card-columns {
+  @media (min-width: 576px) {
+    column-count: 1;
+  }
+  @media (min-width: 768px) {
+    column-count: 2;
+  }
+  @media (min-width: 1200px) {
+    column-count: 2;
+  }
+} 
+
+.titleG{
+  text-align: center;
+}
+
+.icono{
+  right:0.75rem;
+}
+
+.menuO{
+  color:white;
+  font-size:25px;
+}
+.btnCrear{
+  color:white;
+  font-size: 20px;
+}
+
+
+/*# sourceMappingURL=mainStyles.css.map */

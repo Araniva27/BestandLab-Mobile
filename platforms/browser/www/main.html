@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLab &middot; Inicio </title>
+    <!-- <link rel="icon" href="../resources/img/logo/icon.png" type="image/png" sizes="16x16"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <link rel="stylesheet" href="css/all.css" />
+</head>
+<body> 
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm p-3 mb-5">
+        <a class="navbar-brand" href="home.php">
+            BestandLab
+        </a>
+		
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse scrollbar-info" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+				<a class="menuO" href="location.html">Ubicación</a>&nbsp&nbsp&nbsp		
+            </ul>
+			<ul class="navbar-nav">
+				<a class="menuO" href="main.html">Inicio</a>
+            </ul>
+            <div class="float-right d-md-none">
+                <a href="editProfile.php">
+                    <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+                </a>
+            </div>
+        </div>
+        <div class="float-right d-none d-lg-block">
+            <a href="#" class="dropdown-toggle" id="user-profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="user-profile">
+                <a class="dropdown-item" ><i class="fas fa-user fa-sm fa-fw mr-2"></i> Mis Datos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Cerrar Sesión</a>    
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">		
+		<div class="row">
+			<div class="col-xl-3 col-sm-6 mb-3">
+				<div class="card text-white bg-primary o-hidden h-100">
+					<div class="card-body">
+						<div class="card-body-icon">
+						<i class="fas fa-fw fa-atom"></i>
+						</div>
+						<div class="mr-5">127 Productos registrados</div>
+					</div>	  
+				</div>	           
+			</div>
+			<div class="col-xl-3 col-sm-6 mb-3">
+				<div class="card text-white bg-primary o-hidden h-100">
+					<div class="card-body">
+						<div class="card-body-icon">
+						<i class="fas fa-fw fa-chair"></i>
+						</div>
+						<div class="mr-5">832 Activos fijos registrados</div>
+					</div>	  
+				</div>	           
+			</div>
+		</div>	
+		<div class="card bg-primary text-white">
+			<div class="card-body-icon icono">
+				<i class="fas fa-fw fa-chart-pie"></i>
+			</div>
+    		<div class="card-body"><h5 class="titleG">Graficos</div></h5>
+  		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body">
+						<canvas id="grafico"></canvas>
+					</div>
+				</div>	
+			</div>				
+		</div> 		 		
+    </div>
+</main>
+    <footer>    
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script defer src="js/solid.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/gijgo.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/grafico.js"></script>
+    </footer>    
+</html>        

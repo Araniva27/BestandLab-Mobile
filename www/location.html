@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLab &middot; Inicio </title>
+    <!-- <link rel="icon" href="../resources/img/logo/icon.png" type="image/png" sizes="16x16"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <link rel="stylesheet" href="css/all.css" />
+</head>
+<body> 
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm p-3 mb-5">
+        <a class="navbar-brand" href="home.php">
+            BestandLab
+        </a>
+		
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse scrollbar-info" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+				<a class="menuO" href="location.html">Ubicación</a>&nbsp&nbsp&nbsp		
+            </ul>
+			<ul class="navbar-nav">
+				<a class="menuO" href="main.html">Inicio</a>&nbsp&nbsp&nbsp
+            </ul>
+            <ul class="navbar-nav">
+				<a class="menuO" href="departament.html">Departamento</a>&nbsp&nbsp&nbsp	
+            </ul>
+            <ul class="navbar-nav">
+                <a class="menuO" href="cars.html">Vehículos</a>&nbsp&nbsp&nbsp	
+            </ul> 
+            <ul class="navbar-nav">
+                <a class="menuO" href="products.html">Productos</a>&nbsp&nbsp&nbsp
+            </ul>
+            <div class="float-right d-md-none">
+                <a href="editProfile.php">
+                    <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+                </a>
+            </div>
+        </div>
+        <div class="float-right d-none d-lg-block">
+            <a href="#" class="dropdown-toggle" id="user-profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="user-profile">
+                <a class="dropdown-item" ><i class="fas fa-user fa-sm fa-fw mr-2"></i> Mis Datos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Cerrar Sesión</a>    
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">		
+		 <div class="row">
+        <div class="container-fluid">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-sm-10 mb-3">
+                            <h3>Ubicación</h3>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-2 col-sm-2 mb-3">
+                            <!--Boton agregar nuevo registro-->                            
+                            <a class="btn btn-success" data-toggle="modal"data-target="#modalCreate"><h5 class="btnCrear">Registrar &nbsp<i class="fas fa-plus"></i></h5></a></h5>    
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!---Tabla con los registros-->
+                    <div class=" table-responsive col-sm-12">
+                        <table class="table table-bordered table-hover" width="100%" cellspacing="0" id="tblUbi">
+                            <thead>
+                                <tr>
+                                    <!--Encabezados de tabla-->
+                                    <th>Ubicación</th>
+                                    <th>Departamento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <!--Pie de tabla-->
+                                    <th>Ubicación</th>
+                                    <th>Departamento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="tbody-location">
+                                <tr>
+                                    <td>Oficina 1</td>
+                                    <td>Tecnologia</td>
+                                    <td>
+                                        <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
+                                        <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionUbicacion"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>   
+                                    </td>
+                                </tr>    
+                                   <tr>
+                                    <td>Oficina 2</td>
+                                    <td>Quimico</td>
+                                    <td>
+                                        <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
+                                        <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionUbicacion"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>   
+                                    </td>
+                                </tr>    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" roleregistroUbicacion="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro del ubicación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Cuerpo del modal donde se encuentran los campos de registro-->
+                <form id="createUbi" method="POST">
+                    <div class="row">
+                        <!--Fila con el campo de la descripción de procedencia-->
+                        <div class="col-lg-6">
+                            <div class="form-group control-group">
+                                <label class="control-label">Nombre</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control name="create_ubicacion"
+                                        id="create_ubicacion" placeholder="Ingrese ubicación" />
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="create_tipoC">Departamento</label>
+                                <select class="form-control" id="create_deptoU" name="create_deptoU">  
+                                    <option>Tecnología</option>                                 
+                                    <option>Químico</option>                                 
+                                    <option>Secretaria</option>                                 
+                                </select>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <!--footer del modal donde se encuentra el boton de regresar y guardar registro-->
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-arrow-left"></i></button>
+                        <button type="submit" class="btn btn-success" id="btnCrearUbi"><i class="fas fa-save "></i></button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modificacionUbicacion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar Ubicación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Cuerpo del modal donde se encuentran los campos de registro-->
+                <form id="updateUbi" method="POST">
+                    <div class="row">
+                        <!--Fila con el campo de la descripción de procedencia-->
+                        <div class="col-lg-6">
+                            <input type="hidden" name="idUbicacion" id="idUbicacion">
+                            <div class="form-group control-group">
+                                <label class="control-label">Nombre</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" pattern='[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}'
+                                        data-validation-pattern-message="Nombre incorrecto" name="update_ubicacion"
+                                        id="update_ubicacion" placeholder="Ingrese ubicación" />
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="create_tipoC">Departamento</label>
+                                <select class="form-control" id="update_deptoU" name="update_deptoU">                                   
+                                </select>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <!--footer del modal donde se encuentra el boton de regresar y guardar registro-->
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-arrow-left"></i></button>
+                        <button type="submit" class="btn btn-info" id="btnModificarUbi"><i class="fas fa-sync-alt "></i></button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+</div>
+    <footer>    
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script defer src="js/solid.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/gijgo.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/grafico.js"></script>
+    </footer>    
+</html>        

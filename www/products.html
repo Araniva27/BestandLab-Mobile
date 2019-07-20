@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLab &middot; Inicio </title>
+    <!-- <link rel="icon" href="../resources/img/logo/icon.png" type="image/png" sizes="16x16"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <link rel="stylesheet" href="css/all.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm p-3 mb-5">
+            <a class="navbar-brand" href="home.php">
+                BestandLab
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse scrollbar-info" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <a class="menuO" href="location.html">Ubicación</a>&nbsp&nbsp&nbsp
+                </ul>
+                <ul class="navbar-nav">
+                    <a class="menuO" href="main.html">Inicio</a>&nbsp&nbsp&nbsp
+                </ul>
+                <ul class="navbar-nav">
+                    <a class="menuO" href="departament.html">Departamento</a>&nbsp&nbsp&nbsp
+                </ul>
+                <ul class="navbar-nav">
+                    <a class="menuO" href="cars.html">Vehículos</a>&nbsp&nbsp&nbsp
+                </ul>
+                <ul class="navbar-nav">
+                    <a class="menuO" href="products.html">Productos</a>&nbsp&nbsp&nbsp
+                </ul>
+                <div class="float-right d-md-none">
+                    <a href="editProfile.php">
+                        <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle"
+                            alt="Usuario" width="60" height="60" />
+                    </a>
+                </div>
+            </div>
+            <div class="float-right d-none d-lg-block">
+                <a href="#" class="dropdown-toggle" id="user-profile" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle"
+                        alt="Usuario" width="60" height="60" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="user-profile">
+                    <a class="dropdown-item"><i class="fas fa-user fa-sm fa-fw mr-2"></i> Mis Datos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Cerrar
+                        Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body-icon icono">
+                            <i class="fas fa-fw fa-atom"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="titleG">Productos
+                        </div>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body">
+                    <!---Tabla con los registros-->
+                    <div class=" table-responsive col-sm-12">
+                        <table class="table table-bordered table-hover" width="100%" cellspacing="0" id="tblUbi">
+                            <thead>
+                                <tr>
+                                    <!--Encabezados de tabla-->
+                                    <th>Producto</th>
+                                    <th>Codigo</th>
+                                    <th>Proveedor</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <!--Pie de tabla-->
+                                    <th>Producto</th>
+                                    <th>Codigo</th>
+                                    <th>Proveedor</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="tbody-location">
+                                <tr>
+                                    <td>Equipo Quimico</td>
+                                    <td>123456789</td>
+                                    <td>Tirza´s INC.</td>
+                                    <td>                                       
+                                        <a class="btn btn-primary" data-toggle="modal"
+                                            data-target="#datosP"><i class="fas fa-list"
+                                                style="color:white;"></i></h5></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Equipo 100tifico para examenes</td>
+                                    <td>123400789</td>
+                                    <td>Karla´s mi amor´s INC.</td>
+                                    <td>                                       
+                                        <a class="btn btn-primary" data-toggle="modal"
+                                            data-target="#datosP"><i class="fas fa-list"
+                                                style="color:white;"></i></h5></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="datosP" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Datos del producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Cuerpo del modal donde se encuentran los campos de registro-->                
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><h6>Nombre del producto: Equipo Quimico</h6></p>
+                                <p><h6>Codigo de barras: 123456789</h6></p>
+                                <p><h6>Proveedor: Karlita´s mi amor´s INC.</h6></p>
+                                <p><h6>Ubicación: Oficina 1, Tecnologia</h6></p>
+                                <p><h6>Precio $: 1000</h6></p>
+                            </div>                        
+                        </div>
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                    <!--footer del modal donde se encuentra el boton de regresar y guardar registro-->
+                    <button type="button" class="btn btn-success" data-dismiss="modal"><i
+                            class="fas fa-check"></i></button>                    
+                </div>                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script defer src="js/solid.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/gijgo.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/grafico.js"></script>
+    </footer>
+
+</html>
