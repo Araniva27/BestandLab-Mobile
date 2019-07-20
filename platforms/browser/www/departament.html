@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BLab &middot; Inicio </title>
+    <!-- <link rel="icon" href="../resources/img/logo/icon.png" type="image/png" sizes="16x16"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="css/poppins.css">
+    <link rel="stylesheet" href="css/mainStyles.css">
+    <link rel="stylesheet" href="css/all.css" />
+</head>
+<body> 
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm p-3 mb-5">
+        <a class="navbar-brand" href="home.php">
+            BestandLab
+        </a>
+		
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse scrollbar-info" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+				<a class="menuO" href="location.html">Ubicación</a>&nbsp&nbsp&nbsp		
+            </ul>
+			<ul class="navbar-nav">
+				<a class="menuO" href="main.html">Inicio</a>&nbsp&nbsp&nbsp	
+            </ul>
+            <ul class="navbar-nav">
+				<a class="menuO" href="departament.html">Departamento</a>&nbsp&nbsp&nbsp	
+            </ul>
+            <ul class="navbar-nav">
+                <a class="menuO" href="cars.html">Carros</a>&nbsp&nbsp&nbsp	
+            </ul>
+            <ul class="navbar-nav">
+                <a class="menuO" href="products.html">Productos</a>&nbsp&nbsp&nbsp
+            </ul>
+            <div class="float-right d-md-none">
+                <a href="editProfile.php">
+                    <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+                </a>
+            </div>
+        </div>
+        <div class="float-right d-none d-lg-block">
+            <a href="#" class="dropdown-toggle" id="user-profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img data-toggle="tooltip" data-placement="bottom" src="img/pikachu.jpg" class="rounded-circle" alt="Usuario" width="60" height="60" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="user-profile">
+                <a class="dropdown-item" ><i class="fas fa-user fa-sm fa-fw mr-2"></i> Mis Datos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Cerrar Sesión</a>    
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">		
+        <div class="row">
+            <div class="container-fluid">
+                <!--Carta donde se aloja la información-->
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-sm-10 mb-3">
+                                <!--Título de la página-->
+                                <h3>Departamento</h3>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-2 col-sm-2 mb-3">
+                                <!--Boton agregar nuevo registro-->                                
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#registroDepto"><h5 class="btnCrear">Registrar &nbsp<i class="fas fa-plus"></i></h5></a></h5>                                        
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!---Tabla con los registros-->
+                        <div class=" table-responsive col-sm-12">
+                            <table class="table table-bordered table-hover" width="100%" cellspacing="0" id="tblDepto">
+                                <thead>
+                                    <tr>
+                                        <!--Encabezados de tabla-->
+                                        <th>Nombre</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <!--Pie de tabla-->
+                                        <th>Nombre</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </tfoot>
+                                <!--Cuerpo de la tabla-->
+                                <tbody id="tbody-depto">
+                                    <tr>
+                                        <td>Tecnología</td>
+                                        <td>
+                                            <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
+                                            <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionDepto"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Química</td>
+                                        <td>
+                                            <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
+                                            <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionDepto"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="modal fade" id="registroDepto" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <!--Cabeza del modal-->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro de Departamentos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method='post' id='createDepto'>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="createName" class="control-label">Nombre:</label>
+                                <input type="text" id="createName" name="createName" class="form-control"
+                                    aria-describedby="createNameError" onkeyup="validateAlphanumeric(this,1,50, 'Nombre incorrecto')"
+                                    onfocusout="checkCreateName(this)" placeholder="Ingrese el Nombre">
+                                <p id="createNameError" class="form-text text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Pie del modal-->
+                <div class="modal-footer">
+                    <!--Botón para cancelar la operación-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <!--Botón para crear un departamento-->
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save "></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modificacionDepto" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <!--Cabeza del modal-->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar Departamneto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method='post' id='updateDepto'>
+                <input type="hidden" name="idDepto" id="idDepto">
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="updateName" class="control-label">Nombre:</label>
+                                <input type="text" id="updateName" name="updateName" class="form-control"
+                                    aria-describedby="updateNameError" onkeyup="validateAlphanumeric(this,1,50, 'Nombre incorrecto')"
+                                    onfocusout="checkUpdateName(this)" placeholder="Ingrese el Nombre">
+                                <p id="updateNameError" class="form-text text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Pie del modal-->
+                <div class="modal-footer">
+                    <!--Botón para cancelar la operación-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <!--Botón para actualizar un departamento-->
+                    <button type="submit" class="btn btn-info">
+                        <i class="fas fa-sync"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <footer>    
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script defer src="js/solid.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/gijgo.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/grafico.js"></script>
+    </footer>    
+</html>        
