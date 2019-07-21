@@ -129,7 +129,7 @@ $('#createCar').submit(function(){
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
                 $('#registroVehiculo').modal('hide');
-                //destroyTable('tblCars');
+                destroyTable('tblCars');
                 showTable();
                 sweetAlert(1, result.message, null);
             } else {

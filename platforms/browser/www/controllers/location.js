@@ -1,13 +1,29 @@
-$(document).ready(function(){
-    //initTooltip();
+$(document).ready(function(){   
     showTable();    
+    fillSelect(departamento, 'createDepto', null);
+    sweetAlert();
 })
 
-/*
-*   Constante para establecer la ruta y parámetros de comunicación con la api de carros
-*/
+/**
+ * Constante  para establecer las rutas y parámetros de comunicación con la API de ubicacion y departamento
+ */
+const api = 'http://192.168.1.8/BL-LocalMovil/api/location.php?action=';
+const departamento = 'http://192.168.1.8/BL-LocalMovil/api/department.php?action=read';
 
-const api = 'http://192.168.1.8/BL-LocalMovil/api/cars.php?action=';
+/**
+ * Funcion para abrir el modal de registro, limpiarlo y cargar la lista desplegable de departamentos
+ * 
+ * Expects: ninguno
+ * 
+ * Returns: ninguno
+ */
+function modalCreate()
+{
+    $('#createLocation').trigger("reset");
+    $('p').text('');
+    fillSelect(departamento, 'createDepto', null);
+    $('#registroUbicacion').modal('show');
+}
 /**
  * 
  * Funcion para llenar la dabla de datos provenientes de la consulta SQL
@@ -19,22 +35,11 @@ const api = 'http://192.168.1.8/BL-LocalMovil/api/cars.php?action=';
 function fillTable(rows)
 {
     let content = "";
-    rows.forEach(function(row){
-        switch(row.estado){
-            case '1':
-                state = 'Disponible';
-            break;
-            case '2':
-                state = 'Ocupado';
-            break;
-            case '3':
-                state = 'Reparación';
-            break;
-        }
+    rows.forEach(function(row){       
         content += `
             <tr>        
-                <td>${row.placa}</td>
-                <td>${state}</td>                
+                <td>${row.Nombre}</td>
+                <td>${row.Depto}</td>                
                 <td>
                     <div class="row justify-content-center align-items-center">
                         <div class="col-xs-12">
@@ -45,7 +50,7 @@ function fillTable(rows)
                         </div> &nbsp
                         <div class="col-xs-12">
                             <span data-toggle="tooltip" data-placement="right" title="Eliminar">
-                                <button type="button" class="btn btn-danger" onclick="confirmDelete('${api}', ${row.Codigo}, 'tblCars')"><i class="fas fa-trash"></i>
+                                <button type="button" class="btn btn-danger" onclick="confirmDelete('${api}', ${row.Codigo}, 'tblUbi')"><i class="fas fa-trash"></i>
                                 </button>
                                 <span>
                         </div>
@@ -54,16 +59,16 @@ function fillTable(rows)
             </tr>
         `;
     });
-    $('#tbody-cars').html(content);
-    initTable('tblCars');
+    $('#tbody-location').html(content);
+    initTable('tblUbi');
     $('[data-toggle="tooltip"]').tooltip();
 }
 /**
- * Funcion para leer los registros de la tabla carros
+ * Funcion para leer registros de la tabla ubicacion
  * 
- * Expects: rows, los registros obtenidos de la consulta sql
+ * Expects: ninguno
  * 
- * Returns:ninguno 
+ * Returns: ninguno
  */
 function showTable()
 {
@@ -94,32 +99,27 @@ function showTable()
     });
 }
 
-/**
- * Funcion para abrir el modal de registro
- * 
- * Expects: ninguno
- * 
- * Returns: ninguno
- */
-function modalCreate()
+function checkLocation()
 {
-    $('#createCar')[0].reset();    
-    $('#registroVehiculo').modal('show');
+    checkDatas(api+'checkLocation', $('#createLocation').serialize(),'locationError');
+    //checkDatas(api+'checkLocation', {name: $('#createName').val(), depto:$('#createDepto').val()});
 }
 
+
+
 /**
- * Funcion para crear un nuevo vehiculo
+ * Funcion para registrar una nueva ubicacion
  * 
  * Expects: ninguno
  * 
  * Returns: ninguno
  */
-$('#createCar').submit(function(){
+$('#createUbi').submit(function(){
     event.preventDefault();
     $.ajax({
         url: api + 'create',
         type: 'post',
-        data: $('#createCar').serialize(),
+        data: $('#createUbi').serialize(),
         datatype: 'json',
     })
     .done(function(response){
@@ -128,8 +128,8 @@ $('#createCar').submit(function(){
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
-                $('#registroVehiculo').modal('hide');
-                destroyTable('tblCars');
+                $('#registroUbicacion').modal('hide');
+                destroyTable('tblUbi');
                 showTable();
                 sweetAlert(1, result.message, null);
             } else {
@@ -137,7 +137,7 @@ $('#createCar').submit(function(){
             }
         } else {
             console.log(response);
-            //sweetAlert(2,error(response),null);
+            sweetAlert(2,error(response),null);
         }
     })
     .fail(function(jqXHR){
@@ -145,136 +145,72 @@ $('#createCar').submit(function(){
         console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
     });
 })
-
 /**
- * Funcion para cargar el modal de actualizar
+ * Funcion para abrir modal y llenar los campos con la informacion del registro correspondiente
  * 
- * Expects: id (identificador del vehiculo)
+ * Expects: id, define la ubicacion de la cual se quieren obtener los datos
  * 
  * Returns: ninguno
- */
-function modalUpdate(id)
-{
+  */
+function modalUpdate(id){
     $.ajax({
         url: api + 'get',
         type: 'post',
-        data: {
-            identifier: id
+        data:{
+            Codigo: id
         },
         datatype: 'json'
     })
     .done(function(response){
-        //Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
+        // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
         if (isJSONString(response)) {
             const result = JSON.parse(response);
-            // Se comprueba que hay acciones registrados para el tipo de usuario
+            // Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
             if (result.status) {
-                $('#updateCar')[0].reset();
-                $('#idCar').val(result.dataset.Codigo);
-                var array = result.dataset.Placa.split(' ');
-                fillType(array[0]);
-                $('#updateNum').val(array[1]);
-                fillStatus(result.dataset.Estado);
-                $('#actualizarVehiculo').modal('show'); 
+                $('#updateLocation').trigger("reset");
+                $('p').text('');
+                $('#idLocation').val(result.dataset.Codigo);
+                $('#updateName').val(result.dataset.Nombre);
+                fillSelect(departamento, 'updateDepto', result.dataset.Depto);
+                $('#modificacionUbicacion').modal('show');
             } else {
-                sweetAlert(3, result.exception, null);
+                sweetAlert(2, result.exception, null);
             }
         } else {
             console.log(response);
-            sweetAlert(3,error(response),null);
+            sweetAlert(2,error(response),null);
         }
     })
     .fail(function(jqXHR){
-        //Se muestran en consola los posibles errores de la solicitud AJAX
+        // Se muestran en consola los posibles errores de la solicitud AJAX
         console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
     });
 }
 
-/**
- * Funcion para cargar el comobox de modificar
- * 
- * Expects: type (el tipo de placa)
- * 
- * Returns: ninguno
- */
-function fillType(type)
+function checkLocationUpdate()
 {
-    let content = `
-        <option value="${type}" selected>${type}</option>
-    `;
-    switch (type){
-        case 'P':
-            content +=`
-                <option value="MB"> MB</option>
-                <option value="A">A</option>
-            `;
-            break;
-        case 'MB':
-            content += `
-                <option value="P">P</option>
-                <option value="A">A</option>
-            `;
-            break;
-        case 'A':
-                content += `
-                <option value="P">P</option>
-                <option value="MB">MB</option>
-            `;
-            break;
-    }
-    $('#updatePlate').html(content);
+    checkDatas(api+'checkLocationUpdate', $('#updateLocation').serialize(),'locationErrorUpdate');
+    //checkDatas(api+'checkLocation', {name: $('#createName').val(), depto:$('#createDepto').val()});
 }
 
 /**
- * Funcion para cargar el combobox de modificar el estado
- * 
- * Expects: status (estado del vehiculo)
- * 
- * Returns: ninguno
+* Funcion para modificar datos de ubicacion
+*
+*Expects : ninguno
+*
+*Returns: ninguno
  */
-function fillStatus(status)
+$('#updateUbi').submit(function()
 {
-    let cont = '';
-    switch (status){
-        case '1':
-            cont +=`
-                <option value="1" selected>Disponible</option>
-                <option value="2">Ocupado</option>
-                <option value="3">Reparación</option>
-            `;
-            break;
-        case '2':
-            cont += `
-                <option value="2" selected>Ocupado</option>
-                <option value="1">Disponible</option>
-                <option value="3">Reparación</option>
-            `;
-            break;
-        case '3':
-            cont += `
-                <option value="3" selected>Reparación</option>
-                <option value="1">Disponible</option>
-                <option value="2">Ocupado</option>
-            `;
-            break;
-    }
-    $('#updateStatus').html(cont);
-}
-
-/**
- * Funcion para modificar un nuevo vehiculo
- * 
- * Expects: ninguno
- * 
- * Returns: ninguno
- */
-$('#updateCar').submit(function(){
     event.preventDefault();
     $.ajax({
         url: api + 'update',
         type: 'post',
-        data: $('#updateCar').serialize(),
+        data: new FormData($('#updateUbi')[0]),
         datatype: 'json',
+        cache: false,
+        contentType: false,
+        processData: false
     })
     .done(function(response){
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
@@ -282,8 +218,8 @@ $('#updateCar').submit(function(){
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
-                $('#actualizarVehiculo').modal('hide');
-                destroyTable('tblCars');
+                destroyTable('tblUbi');
+                $('#modificacionUbicacion').modal('hide');
                 showTable();
                 sweetAlert(1, result.message, null);
             } else {
@@ -303,7 +239,7 @@ $('#updateCar').submit(function(){
 function error(response){
     switch (response) {
         case 'Dato duplicado, no se puede guardar':   
-            mensaje = 'Carro ya existente';
+            mensaje = 'Ubicación ya existente';
             break;
         default:
             mensaje = 'Ocurrio un problema, reportese con su administrador';

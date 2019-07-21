@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-2 col-sm-2 mb-3">
                             <!--Boton agregar nuevo registro-->                            
-                            <a class="btn btn-success" data-toggle="modal"data-target="#modalCreate"><h5 class="btnCrear">Registrar &nbsp<i class="fas fa-plus"></i></h5></a></h5>    
+                            <a class="btn btn-success" onclick="modalCreate()"><h5 class="btnCrear">Registrar &nbsp<i class="fas fa-plus"></i></h5></a></h5>    
                         </div>
                     </div>
                 </div>
@@ -93,23 +93,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
-                            <tbody id="tbody-location">
-                                <tr>
-                                    <td>Oficina 1</td>
-                                    <td>Tecnologia</td>
-                                    <td>
-                                        <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
-                                        <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionUbicacion"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>   
-                                    </td>
-                                </tr>    
-                                   <tr>
-                                    <td>Oficina 2</td>
-                                    <td>Quimico</td>
-                                    <td>
-                                        <a class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></h5></a>   
-                                        <a class="btn btn-primary" data-toggle="modal"data-target="#modificacionUbicacion"><i class="fas fa-sync-alt" style="color:white;"></i></h5></a>   
-                                    </td>
-                                </tr>    
+                            <tbody id="tbody-location">                                
                             </tbody>
                         </table>
                     </div>
@@ -119,7 +103,7 @@
     </div>
     </div>
 </main>
-<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+<div class="modal fade" id="registroUbicacion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" roleregistroUbicacion="document">
         <div class="modal-content">
@@ -138,8 +122,8 @@
                             <div class="form-group control-group">
                                 <label class="control-label">Nombre</label>
                                 <div class="controls">
-                                    <input type="text" class="form-control name="create_ubicacion"
-                                        id="create_ubicacion" placeholder="Ingrese ubicación" />
+                                    <input type="text" class="form-control" name="createName"
+                                        id="createName" placeholder="Ingrese ubicación" />
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -147,10 +131,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="create_tipoC">Departamento</label>
-                                <select class="form-control" id="create_deptoU" name="create_deptoU">  
-                                    <option>Tecnología</option>                                 
-                                    <option>Químico</option>                                 
-                                    <option>Secretaria</option>                                 
+                                <select class="form-control" id="createDepto" name="createDepto">                                                                  
                                 </select>
                             </div>
                         </div>  
@@ -182,13 +163,13 @@
                     <div class="row">
                         <!--Fila con el campo de la descripción de procedencia-->
                         <div class="col-lg-6">
-                            <input type="hidden" name="idUbicacion" id="idUbicacion">
+                            <input type="hidden" name="idLocation" id="idLocation">
                             <div class="form-group control-group">
                                 <label class="control-label">Nombre</label>
                                 <div class="controls">
                                     <input type="text" class="form-control" pattern='[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}'
-                                        data-validation-pattern-message="Nombre incorrecto" name="update_ubicacion"
-                                        id="update_ubicacion" placeholder="Ingrese ubicación" />
+                                        data-validation-pattern-message="Nombre incorrecto" name="updateName"
+                                        id="updateName" placeholder="Ingrese ubicación" />
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -196,7 +177,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="create_tipoC">Departamento</label>
-                                <select class="form-control" id="update_deptoU" name="update_deptoU">                                   
+                                <select class="form-control" id="updateDepto" name="updateDepto">                                   
                                 </select>
                             </div>
                         </div>  
@@ -215,14 +196,17 @@
     <footer>    
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
         <script src="js/sweetalert.min.js"></script>
+        <script src="js/components.js"></script>
+        <script src="js/bootstrap.min.js"></script>        
         <script defer src="js/solid.js"></script>
-        <script src="js/all.js"></script>
-        <script src="js/sweetalert.min.js"></script>
+        <script src="js/all.js"></script>        
         <script src="js/gijgo.min.js"></script>
         <script src="js/jqBootstrapValidation.js"></script>
         <script src="js/Chart.min.js"></script>
-        <script src="js/grafico.js"></script>
+        <script src="js/grafico.js"></script>        
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/validator.js"></script>
+        <script src="controllers/location.js"></script>
     </footer>    
 </html>        

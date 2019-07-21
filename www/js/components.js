@@ -127,7 +127,7 @@ function initTooltip()
 *   Returns: ninguno.
 */
 function fillSelect(api, id, selected)
-{
+{    
     $.ajax({
         url: api,
         type: 'post',
@@ -139,7 +139,7 @@ function fillSelect(api, id, selected)
         if (isJSONString(response)) {
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
-            if (result.status) {
+            if (result.status) {                
                 let content = '';
                 if (!selected) {
                     content += '<option value="" disabled selected>Seleccione una opción</option>';
@@ -279,4 +279,4 @@ function checkDatas(api, dataset,id)
         console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
     });   
 }
-  
+
